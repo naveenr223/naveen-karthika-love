@@ -583,13 +583,25 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.5rem !important;
-                /* Smaller for mobile */
+                font-size: 2.2rem !important;
+                /* Adjusted for mobile */
                 line-height: 1.2;
+                margin-top: 20px;
             }
 
             .scene-title {
-                font-size: 1.8rem !important;
+                font-size: 1.6rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+                letter-spacing: 2px !important;
+            }
+
+            .dedication-text {
+                font-size: 0.95rem !important;
+                padding: 15px !important;
+                margin-top: 20px !important;
             }
 
             .glass-card {
@@ -600,6 +612,11 @@
 
             .story-container::before {
                 left: 20px;
+            }
+
+            .scroll-indicator {
+                bottom: 80px !important;
+                /* Moved up significantly for mobile */
             }
 
             /* Timeline on side for mobile */
