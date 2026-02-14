@@ -384,6 +384,32 @@
             animation: bounce 2s infinite;
         }
 
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
         .scroll-arrow {
             font-size: 2rem;
             color: var(--text-gold);
@@ -597,9 +623,12 @@
 
             <!-- Step 1: Select Song -->
             <div style="margin-top: 30px; margin-bottom: 20px;">
+                <input type="password" id="passwordInput" placeholder="Enter Secret Code ❤️"
+                    style="padding: 12px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); color: white; outline: none; text-align: center; font-size: 1rem; width: 250px; margin-bottom: 15px;">
+                <br>
                 <input type="file" id="songInput" accept="audio/*" style="display: none;">
                 <button id="selectSongBtn"
-                    style="background: transparent; color: white; padding: 12px 30px; border-radius: 50px; border: 1px solid white; font-size: 1rem; cursor: pointer; transition: all 0.3s; margin-bottom: 20px;">
+                    style="background: transparent; color: white; padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.5); font-size: 0.9rem; cursor: pointer; transition: all 0.3s; margin-bottom: 20px;">
                     🎵 Select Song (Optional)
                 </button>
             </div>
@@ -852,6 +881,20 @@
 
         // 2. Start Journey (Tap to Open)
         enterBtn.addEventListener('click', () => {
+            const passwordInput = document.getElementById('passwordInput');
+            const password = passwordInput.value.trim();
+
+            if (password !== "NaveenkarthiNirav") {
+                passwordInput.style.border = "2px solid #ff4d4d";
+                passwordInput.classList.add('shake');
+                alert("Incorrect Password! Hint: Our names combined ❤️");
+                setTimeout(() => {
+                    passwordInput.classList.remove('shake');
+                    passwordInput.style.border = "1px solid rgba(255,255,255,0.5)";
+                }, 500);
+                return;
+            }
+
             // Push History State (so back button works)
             history.pushState({ page: 'journey' }, null, '#journey');
 
