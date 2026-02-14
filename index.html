@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen & Karthika | Our Life Journey</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at center, #4a0e1c 0%, #1a0509 100%);
+            --card-glass: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 215, 0, 0.2);
+            --text-gold: #ffcf70;
+            --text-white: #f0f0f0;
+            --text-dim: #cfcfcf;
+            --accent-red: #ff2d55;
+            --glow-shadow: 0 0 20px rgba(255, 207, 112, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-white);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- BACKGROUND ANIMATION (Fireflies) --- */
+        .firefly {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+            animation: firefly-move 20s infinite alternate;
+            opacity: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes firefly-move {
+            0% {
+                transform: translate(-50vw, 50vh);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(20vw, -20vh);
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-20vw, -40vh);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Hearts Update */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -100px;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 45, 85, 0.6);
+            transform: rotate(45deg);
+            animation: floatUp 15s linear infinite;
+            filter: drop-shadow(0 0 5px #ff2d55);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -8px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -8px;
+            top: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(45deg) scale(0.5);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(45deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--text-gold);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- LAYOUT --- */
+        .story-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Timeline Connector Line */
+        .story-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--text-gold), transparent);
+            transform: translateX(-50%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        section {
+            min-height: 80vh;
+            /* Condensed slightly */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        /* --- CARDS (PREMIUM GLASS) --- */
+        .glass-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Golden glow on hover */
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.15);
+        }
+
+        /* Subtle shimmer effect */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+            transition: 0.7s ease-in-out;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffb347, #ffcc33);
+            color: #1a0509;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scene-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            /* Gold Gradient Text */
+            background: linear-gradient(to right, #ffcf70, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scene-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        /* Emotion Tag */
+        .emotion-tag {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .emotion-tag span {
+            color: #ff2d55;
+            text-shadow: 0 0 10px rgba(255, 45, 85, 0.5);
+        }
+
+        /* --- SPECIAL HIGHLIGHTS --- */
+        .highlight-struggle {
+            border-left: 4px solid #ff2d55;
+            background: linear-gradient(to right, rgba(255, 45, 85, 0.05), transparent);
+        }
+
+        .dedication-box {
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
+        }
+
+        /* --- HERO INTRO --- */
+        #intro {
+            height: 100vh;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            animation: fadeInDown 2s ease;
+            text-shadow: 0 0 30px rgba(255, 207, 112, 0.4);
+        }
+
+        .hero-title span {
+            animation: beat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .dedication-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            font-weight: 300;
+            background: rgba(255, 255, 255, 0.05);
+            /* Very subtle glass */
+            padding: 20px;
+            border-radius: 15px;
+            border-top: 1px solid var(--text-gold);
+            border-bottom: 1px solid var(--text-gold);
+            backdrop-filter: blur(5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 3s ease 1s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: fit-content;
+            text-align: center;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            font-size: 2rem;
+            color: var(--text-gold);
+            margin-top: 10px;
+            display: block;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-15px);
+            }
+
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* --- BUTTONS --- */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--text-gold);
+            color: var(--text-gold);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .music-btn:hover {
+            background: var(--text-gold);
+            color: #1a0509;
+            transform: rotate(360deg);
+        }
+
+        #surpriseBtn {
+            margin-top: 30px;
+            padding: 16px 45px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            background: linear-gradient(45deg, #ff2d55, #c70039);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        #surpriseBtn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 45, 85, 0.6);
+        }
+
+        /* --- OVERLAY --- */
+        #startOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Pink to Red Gradient from image */
+            background: linear-gradient(to right, #f88a95, #d63f3f);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: opacity 1s ease;
+        }
+
+        #startOverlay h1 {
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #startOverlay p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        #enterBtn {
+            margin-top: 20px;
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            background: white;
+            color: #d63f3f;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #enterBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* --- FINALE SCREEN (PREMIUM) --- */
+        #finaleScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ff2d55 0%, #2e0014 100%);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .finale-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(255, 45, 85, 0.5);
+            max-width: 90%;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .finale-card h1 {
+            color: #fff;
+            text-shadow: 0 0 20px #ff2d55;
+        }
+
+        .highlight-text {
+            color: var(--text-gold);
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-top: 20px;
+            display: block;
+            text-shadow: 0 0 10px var(--text-gold);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem !important;
+            }
+
+            .scene-title {
+                font-size: 2.2rem !important;
+            }
+
+            .glass-card {
+                padding: 30px 20px !important;
+            }
+
+            .story-container::before {
+                left: 20px;
+            }
+
+            /* Timeline on side for mobile? Or keep center */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio Player (Manual Only) -->
+    <audio id="bgMusic" loop></audio>
+
+    <button class="music-btn" id="musicToggle" aria-label="Play Music" style="display:none;">
+        🎵
+    </button>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- START OVERLAY -->
+    <div id="startOverlay">
+        <div class="overlay-content" data-aos="zoom-in">
+            <h1>For Karthika</h1>
+            <p>Our Life Journey</p>
+
+            <!-- Step 1: Select Song -->
+            <div style="margin-top: 30px; margin-bottom: 20px;">
+                <input type="file" id="songInput" accept="audio/*" style="display: none;">
+                <button id="selectSongBtn"
+                    style="background: transparent; color: white; padding: 12px 30px; border-radius: 50px; border: 1px solid white; font-size: 1rem; cursor: pointer; transition: all 0.3s; margin-bottom: 20px;">
+                    🎵 Select Song (Optional)
+                </button>
+            </div>
+
+            <!-- Step 2: Open -->
+            <button id="enterBtn">
+                Tap to Open ❤️
+            </button>
+        </div>
+    </div>
+
+    <div class="story-container" id="mainContent">
+
+        <!-- Scene 0: Intro -->
+        <section id="intro">
+            <div data-aos="zoom-in" data-aos-duration="1500">
+                <h1 class="hero-title">Naveen <span style="color:var(--accent-red)">❤️</span> Karthika</h1>
+                <p class="hero-subtitle">A Love Story. A Journey. A Promise.</p>
+                <div class="dedication-text">
+                    Dedicated to my incredible wife, for her endless love, sacrifices, and the beautiful life she has
+                    given me.
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <p>Scroll to Begin Journey</p>
+                <span class="scroll-arrow">⬇</span>
+            </div>
+        </section>
+
+        <!-- Dynamic Scenes Injected Here -->
+        <div id="timeline"></div>
+
+        <!-- Final Dedication Scene -->
+        <section id="dedication">
+            <div class="glass-card dedication-box" data-aos="fade-up" data-aos-duration="2000">
+                <h2 class="scene-title" style="color:var(--accent-red)">Forever Gratitude</h2>
+                <div class="scene-content">
+                    <p>To my dearest Karthika,</p>
+                    <br>
+                    <p>Thank you for standing by me when I had nothing.</p>
+                    <p>Thank you for fighting for our love when the world was against us.</p>
+                    <p>Thank you for the sleepless nights and sacrifices you make for our son, <strong>Nirav
+                            Adhithan</strong>.</p>
+                    <br>
+                    <p style="font-size: 1.4rem; font-weight: 600; color: var(--accent-red);">
+                        "You are the heart of this family. I love you, forever."
+                    </p>
+                </div>
+
+                <button id="surpriseBtn">✨ Tap for Surprise 🎁</button>
+
+                <div class="emotion-tag"><span>❤️</span> Always yours, Naveen</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- GRAND FINALE SCREEN -->
+    <div id="finaleScreen">
+        <div class="finale-card">
+            <div class="pulse-heart">❤️</div>
+            <h1>I Love You forever Karthika</h1>
+            <p>Our journey will continue until eternity...</p>
+            <p>Happy Parenting to us! 👨‍👩‍👦</p>
+            <span class="highlight-text">Forever & Always</span>
+        </div>
+    </div>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // --- DATA SOURCE ---
+        const journeyData = [
+            {
+                title: "First Connection",
+                date: "Nov 14, 2020",
+                desc: "It started with a simple interaction on Instagram. Two strangers connecting through the language of music. We shared posts, likes, and comments, unaware that this was the first note of our life's symphony.",
+                emotion: "Curiosity & New Beginnings",
+                icon: "📱"
+            },
+            {
+                title: "Growing Closer",
+                date: "Late 2020",
+                desc: "From strangers to friends. Daily chats turned into a routine of sharing our lives. Slowly, a bond of trust began to form, weaving our days together.",
+                emotion: "Bonding & Comfort",
+                icon: "💬"
+            },
+            {
+                title: "A Small Gift",
+                date: "Nov 22, 2020",
+                desc: "I sent you a simple paper craft for your birthday. You liked it. That small moment of joy was the spark that hinted at something more.",
+                emotion: "Affection",
+                icon: "🎁"
+            },
+            {
+                title: "The First Question",
+                date: "Dec 1, 2020",
+                desc: "I gathered the courage to propose. You were honest and said 'No', fearing your father wouldn't accept. It was painful, but your honesty only made me respect you more.",
+                emotion: "Honesty & Respect",
+                icon: "💔"
+            },
+            {
+                title: "Silent Devotion",
+                date: "2021",
+                desc: "I didn't walk away. I chose to stay, showing love through care, not pressure. No demands, just pure, silent support. Waiting for the day your heart would feel safe.",
+                emotion: "Persistence & Patience",
+                icon: "🕊️"
+            },
+            {
+                title: "Unbreakable Bond",
+                date: "2021 - 2022",
+                desc: "Our late-night chats, the fights, and the breakups between us... every moment apart only made us realize how much we needed each other. Every breakup turned into more love and care.",
+                emotion: "Passion & Resilience",
+                icon: "🌙"
+            },
+            {
+                title: "Love Accepted",
+                date: "Jan 3, 2022",
+                desc: "The day the stars aligned. You said 'Yes'. The wait was over, and a new chapter of shared joy began. Our hearts finally beat in rhythm.",
+                emotion: "Joy & Relief",
+                icon: "✨"
+            },
+            {
+                title: "The Struggle",
+                date: "July 2022 - Jan 2024",
+                desc: "The path wasn't easy. We faced tears, fears, and immense difficulties. You suffered more than I did, facing the storm with incredible strength. But we held on.",
+                emotion: "Sacrifice & Strength",
+                icon: "⛈️",
+                specialClass: "highlight-struggle"
+            },
+            {
+                title: "Destiny Overwritten",
+                date: "Jan 2024",
+                desc: "Astrology created obstacles with our families, but God created a new path for us. A way to walk together, hand in hand, for a lifetime.",
+                emotion: "Faith & Destiny",
+                icon: "✨"
+            },
+            {
+                title: "She Said Yes (Again)",
+                date: "Feb 29, 2024",
+                desc: "The storm passed. Our families came together. We got engaged. A celebration of love conquering all obstacles.",
+                emotion: "Celebration",
+                icon: "💍"
+            },
+            {
+                title: "Forever Bound",
+                date: "March 1, 2025",
+                desc: "Marriage. The vow to be together for eternity. Two souls, one journey, forever.",
+                emotion: "Eternal Bond",
+                icon: "💒"
+            },
+            {
+                title: "Our Miracle",
+                date: "Jan 18, 2025",
+                desc: "A new life. A new hope. Our baby boy, <strong>Nirav Adhithan</strong>, came into this world. The greatest gift of our love.",
+                emotion: "Miracle & Pure Love",
+                icon: "👶"
+            },
+            {
+                title: "A Lifetime Promise",
+                date: "Forever",
+                desc: "We will walk this journey life-long with more love, care, and happiness. Together, we will give our son the best parenting and a life full of joy.",
+                emotion: "Eternal Happiness",
+                icon: "👨‍👩‍👦"
+            }
+        ];
+
+        // --- RENDER ENGINE ---
+        const timeline = document.getElementById('timeline');
+
+        journeyData.forEach((scene, index) => {
+            const section = document.createElement('section');
+            const isLeft = index % 2 === 0; // Alternating layout if we wanted, for now centered
+
+            let extraClass = scene.specialClass ? ` ${scene.specialClass}` : '';
+
+            section.innerHTML = `
+                <div class="glass-card${extraClass}" data-aos="fade-up" data-aos-duration="1200" data-aos-offset="200">
+                    <span class="date-badge">${scene.date}</span>
+                    <div style="font-size: 3rem; margin-bottom: 10px;">${scene.icon}</div>
+                    <h2 class="scene-title">${scene.title}</h2>
+                    <div class="scene-content">
+                        ${scene.desc}
+                    </div>
+                    <div class="emotion-tag">
+                        Emotion: <span>${scene.emotion}</span>
+                    </div>
+                </div>
+            `;
+            timeline.appendChild(section);
+        });
+
+        // --- ANIMATION INIT ---
+        AOS.init({ once: false, mirror: true });
+
+        // --- FIREFLY GENERATOR ---
+        function createFireflies() {
+            for (let i = 0; i < 30; i++) {
+                let div = document.createElement('div');
+                div.className = 'firefly';
+                div.style.left = Math.random() * 100 + 'vw';
+                div.style.top = Math.random() * 100 + 'vh';
+                div.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                div.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(div);
+            }
+        }
+        createFireflies();
+
+        // --- MANUAL MUSIC LOGIC ---
+        const enterBtn = document.getElementById('enterBtn');
+        const startOverlay = document.getElementById('startOverlay');
+        const mainContent = document.getElementById('mainContent');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+
+        const songInput = document.getElementById('songInput');
+        const selectSongBtn = document.getElementById('selectSongBtn');
+
+        let isPlaying = false;
+        let hasSelectedSong = false;
+
+        // 1. Select Song Logic
+        selectSongBtn.addEventListener('click', () => songInput.click());
+
+        songInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const fileURL = URL.createObjectURL(file);
+                bgMusic.src = fileURL;
+                bgMusic.load();
+                hasSelectedSong = true;
+
+                selectSongBtn.textContent = `✅ Selected: ${file.name}`;
+                selectSongBtn.style.background = "#2ecc71";
+                selectSongBtn.style.borderColor = "#2ecc71";
+            }
+        });
+
+        // 2. Start Journey (Tap to Open)
+        enterBtn.addEventListener('click', () => {
+            // Push History State (so back button works)
+            history.pushState({ page: 'journey' }, null, '#journey');
+
+            // Play Music only if a file has been selected
+            if (hasSelectedSong) {
+                bgMusic.volume = 1.0;
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.classList.add('music-anim');
+                    musicBtn.textContent = '⏸';
+                }).catch(e => {
+                    console.log("Playback error:", e);
+                });
+            }
+
+            // Hide Overlay
+            startOverlay.style.opacity = '0';
+            setTimeout(() => {
+                startOverlay.style.display = 'none';
+                mainContent.style.opacity = '1';
+                // Show controls
+                if (hasSelectedSong) {
+                    musicBtn.style.display = 'flex'; // Show controls only if music exists
+                }
+            }, 1000);
+        });
+
+        // 3. Music Toggle Control
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.textContent = '🎵';
+                musicBtn.classList.remove('music-anim');
+            } else {
+                bgMusic.play();
+                musicBtn.textContent = '⏸';
+                musicBtn.classList.add('music-anim');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 4. Browser Navigation Handling (Back Button)
+        // 4. Browser Navigation Handling (Back Button)
+        window.addEventListener('popstate', (event) => {
+            // Case A: Back from Finale to Journey
+            if (event.state && event.state.page === 'journey') {
+                // Hide Finale
+                const finaleScreen = document.getElementById('finaleScreen');
+                if (finaleScreen) {
+                    finaleScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        finaleScreen.style.display = 'none';
+                        // Show Main Content
+                        const mainContent = document.getElementById('mainContent');
+                        mainContent.style.opacity = '1';
+                    }, 500);
+                }
+            }
+            // Case B: Back from Journey to Start Overlay
+            else if (!event.state || event.state.page !== 'journey') {
+                // Ensure Finale is closed just in case
+                const finaleScreen = document.getElementById('finaleScreen');
+                if (finaleScreen) finaleScreen.style.display = 'none';
+
+                // Return to Overlay
+                // Reset Scroll to Top
+                window.scrollTo({ top: 0, behavior: 'auto' });
+
+                mainContent.style.opacity = '0';
+                startOverlay.style.display = 'flex';
+                musicBtn.style.display = 'none';
+
+                setTimeout(() => {
+                    startOverlay.style.opacity = '1';
+                }, 100);
+            }
+        });
+
+        // --- BACKGROUND HEARTS ---
+        const heartsContainer = document.getElementById('heartsContainer');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000); // Remove after animation
+        }
+        setInterval(createHeart, 400); // New heart every 400ms
+
+        // --- SURPRISE FINALE LOGIC ---
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const finaleScreen = document.getElementById('finaleScreen');
+
+        if (surpriseBtn && finaleScreen) {
+            surpriseBtn.addEventListener('click', () => {
+                // Push History State so we can go back
+                history.pushState({ page: 'finale' }, null, '#finale');
+
+                // 1. Transition
+                const mainContent = document.getElementById('mainContent');
+                mainContent.style.opacity = '0';
+                setTimeout(() => {
+                    finaleScreen.style.display = 'flex';
+                    // Force reflow
+                    void finaleScreen.offsetWidth;
+                    finaleScreen.style.opacity = '1';
+                }, 500);
+
+                // 2. Confetti Explosion (Party Pop)
+                triggerConfetti();
+            });
+        }
+
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 20000 };
+
+            var random = function (min, max) { return Math.random() * (max - min) + min; }
+
+            var interval = setInterval(function () {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+
+                if (typeof confetti === 'function') {
+                    // since particles fall down, start a bit higher than random
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+                }
+            }, 250);
+        }
+
+        function startBalloons() {
+            setInterval(() => {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                // Randomly choose heart shape or round
+                if (Math.random() > 0.5) balloon.classList.add('heart-shape');
+
+                balloon.style.left = Math.random() * 100 + 'vw';
+                // Randomize color slightly
+                const hue = Math.random() * 50 + 330; // Reds and Pinks
+                balloon.style.filter = `hue-rotate(${hue}deg)`;
+
+                finaleScreen.appendChild(balloon);
+
+                // Remove after animation
+                setTimeout(() => {
+                    balloon.remove();
+                }, 8000);
+            }, 800);
+        }
+
+    </script>
+</body>
+
+</html>
