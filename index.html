@@ -583,22 +583,77 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 3.5rem !important;
+                font-size: 2.5rem !important;
+                /* Smaller for mobile */
+                line-height: 1.2;
             }
 
             .scene-title {
-                font-size: 2.2rem !important;
+                font-size: 1.8rem !important;
             }
 
             .glass-card {
-                padding: 30px 20px !important;
+                padding: 20px 15px !important;
+                margin-left: 10px;
+                margin-right: 10px;
             }
 
             .story-container::before {
                 left: 20px;
             }
 
-            /* Timeline on side for mobile? Or keep center */
+            /* Timeline on side for mobile */
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                padding-left: 50px;
+                position: relative;
+            }
+
+            .timeline-icon {
+                left: 0 !important;
+                top: 0 !important;
+                transform: none !important;
+                margin-bottom: 10px;
+            }
+
+            .timeline-content {
+                width: 100% !important;
+                text-align: left !important;
+            }
+
+            /* Center alignment for mobile overlay */
+            #startOverlay h1 {
+                font-size: 3rem;
+            }
+
+            #passwordInput {
+                width: 90% !important;
+            }
+
+            #startOverlay {
+                padding: 20px;
+                text-align: center;
+            }
+
+            #startOverlay h1 {
+                font-size: 3.5rem;
+                /* Reduced from 5rem */
+                line-height: 1.1;
+                word-wrap: break-word;
+                /* Ensure wrapping */
+            }
+
+            .overlay-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            #passwordInput {
+                width: 80% !important;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
